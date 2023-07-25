@@ -1,5 +1,6 @@
 import { v4 as uuid4 } from "uuid";
 import axios from "axios";
+//import archivo from "fs"
 
 let usuarios = [];
 
@@ -19,3 +20,4 @@ const registerUser = async () =>{
     // aqui empujamos o creamos al nuevo usuario
     usuarios.push(newUser);
 };
+//json con fs.writefileSync

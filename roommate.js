@@ -2,6 +2,9 @@ import { v4 as uuid4 } from "uuid";
 import axios from "axios";
 //import archivo from "fs"
 
+const path = "./files/roommate.txt";
+const petro = require("fs");
+
 let usuarios = [];
 
 //creamos la llamada a la api
@@ -16,8 +19,12 @@ const registerUser = async () =>{
         lastName: user.name.last,
         id: uuidv4().slice(0, 6), //esto va a limita el numero de 6 digitos del id
     };
-
+    petro.appendFileSync(path, newUser)
+    console.log(petro.readFileSync(path).toString());
     // aqui empujamos o creamos al nuevo usuario
     usuarios.push(newUser);
 };
+
+// crear funcion: nuevoRoommate() pegar roonmate en el index
+
 //json con fs.writefileSync

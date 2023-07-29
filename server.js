@@ -19,6 +19,23 @@ app.get("/registro",async(req, res)=>{
     res.redirect("/");
     // res.send(`Usuario registrado`);
 });
+
+// app.get("/gastos", async(req, res)=>{
+//     await getGastos();
+//     res.redirect("/");
+// });
+
+// app.put("/gasto", async(req, res)=>{
+//     await editGasto();
+//     res.redirect("/");
+// });
+
+// app.delete("/gasto", async(req, res)=>{
+//     await deleteGasto();
+//     res.redirect("/");
+// });
+
+
 //llamado servidor
 app.listen(3000, ()=>{
     console.log("Servidor corriendo puerto 3000")

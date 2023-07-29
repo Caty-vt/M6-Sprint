@@ -20,6 +20,8 @@ let usuarios = JSON.parse(petro.readFileSync(pathjson));
             firstName: user.name.first,
             lastName: user.name.last,
             id: uuid4().slice(0, 6), //esto va a limita el numero de 6 digitos del id
+            debe: 0,
+            recibe: 0,
         };
         // Agregar Usuarios al arreglo
         usuarios.push(newUser);

@@ -20,10 +20,11 @@
     <hr class="mb-5 bg-light w-25 mx-auto" />
     <div class="row w-100 m-auto">
       <div class="col-4">
-        <h5>Roommates</h5>
-        <button class="btn text-white mb-2" onclick="nuevoRoommate()">
-          Agregar roommate
-        </button>
+        <form action="/registro" method="get">
+          <button type="submit" class="btn text-white mb-2" onclick="registerUser()">
+            Agregar roommate
+          </button>
+        </form>
         <table class="table">
           <thead class="text-white">
             <th>Nombre</th>

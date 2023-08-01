@@ -1,9 +1,11 @@
 import express from "express";
-import { registerUser } from "./roommate.js";
+import { registerGasto, registerUser } from "./roommate.js";
 import fs from "fs"
 const app = express();
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/", (req, res)=>{
     res.send("index");
@@ -13,7 +15,21 @@ app.get('/roommates', (req, res) => {
         const roommates = JSON.parse(fs.readFileSync('files/roommate.json', { enconding:"utf-8"}));
         return res.json({ roommates });
 });
-      
+app.get('/gastos', (req, res) => {
+
+        const gastos = JSON.parse(fs.readFileSync('files/gasto.json', { enconding:"utf-8"}));
+        return res.json({ gastos });
+});
+app.post("/roommate", async (req, res) => {
+    await registerUser();
+    
+});
+app.post("/gasto" , async(req,res)=>{
+     let gastonew = req.body;
+    await registerGasto(gastonew);
+    res.send('Datos recibidos correctamente.');
+});    
+
 app.get("/registro",async(req, res)=>{
     await registerUser();
     res.redirect("/");

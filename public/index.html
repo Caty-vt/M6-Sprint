@@ -148,7 +148,6 @@ Articulos de limpieza</textarea
 
     <script>
       let roommates = [];
-      console.log(roommates);
       let gastos = [];
       let gastoEditing = null;
       const getRoommates = async () => {
@@ -166,7 +165,7 @@ Articulos de limpieza</textarea
   
         try {
           await getRoommates();
-          // await getGastos();
+          await getGastos();
           $("#roommates").html("");
           $("#roommatesSelect").html("");
           $("#roommatesSelectModal").html("");
@@ -194,7 +193,7 @@ Articulos de limpieza</textarea
                   <td>${g.monto}</td>
                   <td class="d-flex align-items-center justify-content-between">
                     <i class="fas fa-edit text-warning" onclick="editGasto('${g.id}')" data-toggle="modal" data-target="#exampleModal"></i>
-                    <i class="fas fa-trash-alt text-danger" onclick="deleteGasto('${g.id}')" ></i>
+                    <i class="fas fa-trash-alt text-dangerconsole.log" onclick="deleteGasto('${g.id}')" ></i>
                   </td>
                 </tr>
               `);
@@ -219,6 +218,7 @@ Articulos de limpieza</textarea
         const monto = Number($("#monto").val());
         await fetch("http://localhost:3000/gasto", {
           method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             roommate: roommateSelected,
             descripcion,

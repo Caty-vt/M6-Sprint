@@ -1,5 +1,5 @@
 import express from "express";
-import { registerGasto, registerUser } from "./roommate.js";
+import { eliminarGasto, registerGasto, registerUser } from "./roommate.js";
 import fs from "fs"
 const app = express();
 
@@ -29,7 +29,11 @@ app.post("/gasto" , async(req,res)=>{
     await registerGasto(gastonew);
     res.send('Datos recibidos correctamente.');
 });    
-
+app.delete("/gasto",(req,res)=>{
+    let gastoid = req.query;
+    eliminarGasto(gastoid);
+    res.status(200).json({ mensaje: "Gasto eliminado exitosamente." });
+});
 app.get("/registro",async(req, res)=>{
     await registerUser();
     res.redirect("/");

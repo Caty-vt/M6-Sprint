@@ -59,4 +59,12 @@ console.log(arregloGastos);
     });
     petro.writeFileSync(pathRoomate, JSON.stringify(usuarios,null,2));
     };
-export {registerUser, registerGasto}; 
+    const eliminarGasto = async(gastoid)=>{
+        let gastos = arregloGastos;
+        console.log(gastos);
+        let gastoindice = gastos.findIndex((gasto) => gasto.id === gastoid);
+        gastos.splice(gastoindice,1);
+        petro.writeFileSync(pathGasto, JSON.stringify(gastos,null,2));
+        registerGasto();
+    }
+export {registerUser, registerGasto,eliminarGasto}; 
